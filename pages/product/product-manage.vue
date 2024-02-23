@@ -39,6 +39,23 @@
 			<el-form-item label="推荐链接" prop="recommend_link">
 			    <el-input v-model="formData.recommend_link" clearable placeholder="请输入推荐链接" />
 			</el-form-item>
+			<el-form-item label="上架时间" prop="startTime">
+			    <el-date-picker
+			        v-model="formData.startTime"
+			        type="datetime"
+			        placeholder="选择上架时间"
+			        class="handle-input mr5">
+			    </el-date-picker>
+			</el-form-item>
+			<el-form-item label="下架时间" prop="endTime">
+			    <el-date-picker
+			        v-model="formData.endTime"
+			        type="datetime"
+			        placeholder="选择下架时间"
+			        class="handle-input mr5">
+			    </el-date-picker>
+			</el-form-item>
+
 
 
             <el-form-item label="图文详情" prop="content">
@@ -80,6 +97,8 @@
 					stock: '',
 					is_sales: 1,
 					thumb: '',
+				    startTime: null,  
+					endTime: null 
 				}, //表单数据
                 rules: {
                     cate_id: [{required: true, message: '请选择产品分类', trigger: ["blur",'change']},],
@@ -140,7 +159,9 @@
 						cate_name: cateRow.name,
 						price: +formData.price,
 						market_price: +formData.market_price,
-						stock: +formData.stock
+						stock: +formData.stock,
+						startTime: formData.startTime, 
+						endTime: formData.endTime   
 					})
 					const operation = formData._id ? 'updateProduct' : 'addProduct';
 					const response = await this.$request('product', operation, sendData);

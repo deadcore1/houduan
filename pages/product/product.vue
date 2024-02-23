@@ -124,6 +124,17 @@
                 this.page = page;
                 this.loadList();
             },
+			// 添加或修改商品
+			async addOrUpdateProduct(ctx) {
+			    const { startTime, endTime, ...otherData } = ctx.request.body;
+			    // ... 其他逻辑
+			    await db.collection('product').add({
+			        startTime,
+			        endTime,
+			        ...otherData
+			    });
+			    // ... 其他逻辑
+			},
 			// 上下架修改
 			async setProductAttr(index, item, key) {
 				const sendData = {

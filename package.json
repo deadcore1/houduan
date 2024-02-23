@@ -12,6 +12,7 @@
   "dependencies": {
     "echarts": "^4.8.0",
     "element-ui": "2.13.2",
+    "node-schedule": "^2.1.1",
     "uni-simple-router": "^1.5.3",
     "xlsx": "^0.17.4"
   }
